@@ -1,0 +1,21 @@
+version: '3'
+services:
+  cli:
+    container_name: redis-cli
+    build: ./cli
+    # command: redis-cli -h redis
+    tty: true
+    networks:
+      - mynet
+  redis:
+    container_name: redis
+    image: redis:6.2
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - mynet
+networks:
+  mynet:
+    driver: bridge
