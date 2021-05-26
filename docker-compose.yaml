@@ -1,9 +1,8 @@
 version: '3'
 services:
   cli:
-    container_name: redis-cli
+    container_name: client
     build: ./cli
-    # command: redis-cli -h redis
     tty: true
     networks:
       - mynet
